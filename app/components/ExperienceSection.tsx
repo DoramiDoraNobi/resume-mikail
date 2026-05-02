@@ -1,13 +1,35 @@
 "use client";
 
-export default function ExperienceSection() {
-  return (
-    <section className="exp-section" id="experience">
-      {/* Ambient background blobs */}
-      <div className="exp-bg-blob exp-bg-blob-1" />
-      <div className="exp-bg-blob exp-bg-blob-2" />
+import { useEffect, useRef } from "react";
 
-      <div className="exp-container">
+export default function ExperienceSection() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    const items = sectionRef.current?.querySelectorAll(".tl-card");
+    items?.forEach((item) => observer.observe(item));
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section className="exp-section" id="experience" ref={sectionRef}>
+      {/* Background effects */}
+      <div className="exp-bg-glow exp-bg-glow-1" />
+      <div className="exp-bg-glow exp-bg-glow-2" />
+
+      <div className="exp-wrapper">
         {/* Header */}
         <div className="exp-header">
           <div className="exp-label">
@@ -15,62 +37,93 @@ export default function ExperienceSection() {
             Perjalanan Saya
           </div>
           <h2 className="exp-heading">
-            Pengalaman &amp; <span>Pendidikan</span>
+            Pengalaman &<br />
+            <span className="exp-heading-accent">Pendidikan</span>
           </h2>
         </div>
 
-        {/* Vertical Center Timeline */}
-        <div className="timeline">
-          <div className="timeline-line" />
+        {/* Center Timeline */}
+        <div className="tl-container">
+          <div className="tl-line" />
 
-          {/* Item 1 — Experience (Left) */}
-          <div className="timeline-entry timeline-left">
-            <div className="timeline-node">
-              <div className="timeline-node-ring" />
-            </div>
-            <div className="timeline-card glass-card">
-              <div className="card-badge badge-ongoing">On Going</div>
-              <div className="card-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          {/* Experience Card — Left */}
+          <div className="tl-row tl-row-left">
+            <div className="tl-card tl-card-left">
+              <div className="tl-card-glow" />
+              <div className="tl-card-inner">
+                <div className="tl-card-top">
+                  <div className="tl-icon-wrap">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                  </div>
+                  <div className="tl-badge tl-badge-live">
+                    <span className="tl-pulse" />
+                    On Going
+                  </div>
+                </div>
+
+                <div className="tl-date">Nov 2025 — Mei 2026</div>
+                <h3 className="tl-role">Web Developer Intern</h3>
+                <div className="tl-company">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Trilogika Edutama
+                </div>
+                <p className="tl-desc">
+                  Membangun dan mengembangkan sistem informasi serta platform pembelajaran berbasis web. Berpartisipasi aktif dalam perancangan, implementasi, dan pemeliharaan sistem — dari merombak total website utama, membangun LMS dari nol, hingga pembuatan web LSP.
+                </p>
+                <div className="tl-tags">
+                  <span>Laravel</span>
+                  <span>Livewire</span>
+                  <span>Full Stack</span>
+                </div>
               </div>
-              <span className="card-date">November 2025 — Mei 2026</span>
-              <h3 className="card-title">Web Developer Internship</h3>
-              <h4 className="card-place">Trilogika Edutama</h4>
-              <p className="card-desc">
-                Membangun dan mengembangkan sistem informasi serta platform pembelajaran berbasis web. Berpartisipasi aktif dalam perancangan, implementasi, dan pemeliharaan beberapa sistem seperti LMS, LSP, dan Main Web perusahaan.
-              </p>
-              <div className="card-tags">
-                <span>Laravel</span>
-                <span>Livewire</span>
-                <span>MySQL</span>
+            </div>
+
+            {/* Center Node */}
+            <div className="tl-node">
+              <div className="tl-node-dot" />
+              <div className="tl-node-ring" />
+            </div>
+
+            <div className="tl-spacer" />
+          </div>
+
+          {/* Education Card — Right */}
+          <div className="tl-row tl-row-right">
+            <div className="tl-spacer" />
+
+            {/* Center Node */}
+            <div className="tl-node">
+              <div className="tl-node-dot tl-node-dot-alt" />
+              <div className="tl-node-ring" />
+            </div>
+
+            <div className="tl-card tl-card-right">
+              <div className="tl-card-glow tl-card-glow-alt" />
+              <div className="tl-card-inner">
+                <div className="tl-card-top">
+                  <div className="tl-icon-wrap tl-icon-wrap-alt">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                  </div>
+                  <div className="tl-badge tl-badge-edu">Aktif</div>
+                </div>
+
+                <div className="tl-date">Saat ini</div>
+                <h3 className="tl-role">S1 Sistem Informasi</h3>
+                <div className="tl-company">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Universitas Amikom Yogyakarta
+                </div>
+                <p className="tl-desc">
+                  Mempelajari rekayasa perangkat lunak, analisis sistem informasi, dan manajemen basis data dengan fokus pada pemecahan masalah dan penciptaan solusi teknologi inovatif.
+                </p>
+                <div className="tl-tags">
+                  <span>Software Engineering</span>
+                  <span>Database</span>
+                  <span>Sistem Informasi</span>
+                </div>
               </div>
             </div>
           </div>
-
-          {/* Item 2 — Education (Right) */}
-          <div className="timeline-entry timeline-right">
-            <div className="timeline-node">
-              <div className="timeline-node-ring" />
-            </div>
-            <div className="timeline-card glass-card">
-              <div className="card-badge badge-active">Aktif</div>
-              <div className="card-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
-              </div>
-              <span className="card-date">Saat Ini</span>
-              <h3 className="card-title">S1 Sistem Informasi</h3>
-              <h4 className="card-place">Universitas Amikom Yogyakarta</h4>
-              <p className="card-desc">
-                Mempelajari rekayasa perangkat lunak, analisis sistem informasi, basis data, dan jaringan komputer dengan fokus pada pemecahan masalah serta penciptaan solusi teknologi yang inovatif.
-              </p>
-              <div className="card-tags">
-                <span>Software Engineering</span>
-                <span>Database</span>
-                <span>UI/UX</span>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
