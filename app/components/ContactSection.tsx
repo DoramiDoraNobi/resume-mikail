@@ -19,7 +19,7 @@ export default function ContactSection() {
             Saya selalu terbuka untuk peluang baru, kolaborasi menarik, atau sekadar berdiskusi tentang teknologi. Jangan ragu untuk menghubungi saya.
           </p>
 
-          <a href="mailto:mikobantul@gmail.com" className="contact-email-btn">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mikobantul@gmail.com" target="_blank" rel="noopener noreferrer" className="contact-email-btn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
             mikobantul@gmail.com
           </a>
@@ -28,13 +28,13 @@ export default function ContactSection() {
         {/* Right — Cards */}
         <div className="contact-cards">
           {/* Email Card */}
-          <a href="mailto:mikailyuddhaw@gmail.com" className="contact-card">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mikobantul@gmail.com" target="_blank" rel="noopener noreferrer" className="contact-card">
             <div className="contact-card-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
             </div>
             <div className="contact-card-text">
               <span className="contact-card-label">Email</span>
-              <span className="contact-card-value">mikailyuddhaw@gmail.com</span>
+              <span className="contact-card-value">mikobantul@gmail.com</span>
             </div>
             <svg className="contact-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
           </a>
