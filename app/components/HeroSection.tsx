@@ -1,141 +1,131 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
+import { ArrowUpRight, GithubLogo, LinkedinLogo, EnvelopeSimple } from "@phosphor-icons/react";
+
+const STAGGER_DELAY = 0.1;
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: STAGGER_DELAY,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 40, filter: "blur(10px)" },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      type: "spring" as const,
+      stiffness: 70,
+      damping: 20,
+      mass: 1,
+    },
+  },
+};
 
 export default function HeroSection() {
   return (
-    <section className="hero-section" id="hero">
-      {/* Main content */}
-      <div className="hero-content">
-        {/* Text side */}
-        <div className="hero-text">
-          <div className="hero-greeting animate-slide-up">
-            <span className="hero-greeting-dot" />
-            Tersedia untuk kerja
-          </div>
+    <section className="relative min-h-[100dvh] w-full flex items-center pt-32 pb-24 px-6 md:px-12 lg:px-24 overflow-hidden">
+      <div className="max-w-[1400px] mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-16 lg:gap-24 relative z-10">
+        
+        {/* Editorial Typography Side */}
+        <motion.div 
+          className="w-full md:w-[55%] flex flex-col items-start"
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+        >
+          {/* Eyebrow Tag */}
+          <motion.div variants={itemVariants} className="flex items-center gap-3 mb-8">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] uppercase tracking-[0.2em] font-medium text-zinc-300">
+              Tersedia untuk kerja
+            </span>
+          </motion.div>
 
-          <h1 className="hero-name animate-slide-up-delay-1">
-            Halo, Nama saya{" "}
-            <span className="hero-name-highlight">Mikail Yuddha Wibowo</span>
-          </h1>
+          {/* Massive Headline */}
+          <motion.h1 variants={itemVariants} className="text-5xl sm:text-6xl lg:text-8xl font-medium tracking-tighter leading-[0.95] text-zinc-100 mb-8">
+            Digital<br />
+            <span className="text-zinc-500 italic">Craftsman.</span>
+          </motion.h1>
 
-          <p className="hero-role animate-slide-up-delay-2">
-            Seorang Full Stack Web Developer yang bersemangat dalam membangun pengalaman
-            digital yang modern, responsif, dan bermakna.
-          </p>
+          <motion.p variants={itemVariants} className="text-base md:text-lg text-zinc-400 leading-relaxed max-w-[50ch] mb-12">
+            Halo, nama saya Mikail Yuddha Wibowo. Seorang Full Stack Developer yang berfokus membangun pengalaman web berkinerja tinggi dengan detail piksel sempurna dan transisi yang *fluid*.
+          </motion.p>
 
-          <div className="hero-actions animate-slide-up-delay-3">
-            <a href="#contact" className="hero-btn hero-btn-primary">
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
+          {/* Magnetic CTA Action */}
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-6 w-full sm:w-auto">
+            <a 
+              href="#contact" 
+              className="group relative inline-flex w-full sm:w-auto items-center gap-4 rounded-full bg-zinc-100 pl-6 pr-2 py-2 text-sm font-semibold text-zinc-950 transition-all ease-fluid duration-500 active:scale-[0.98] hover:bg-white"
+            >
               Hubungi Saya
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-900/10 transition-transform duration-500 ease-fluid group-hover:bg-zinc-900/20 group-hover:scale-105 group-hover:translate-x-1 group-hover:-translate-y-[1px]">
+                <ArrowUpRight weight="bold" className="text-zinc-950" />
+              </span>
             </a>
-            <a href="#projects" className="hero-btn hero-btn-secondary">
-              Lihat Portfolio
-            </a>
-          </div>
 
-          {/* Social links */}
-          <div className="hero-socials animate-slide-up-delay-4">
-            <a
-              href="https://www.linkedin.com/in/mikail-yuddha-wibowo-b579b7221/"
-              className="hero-social-link"
-              aria-label="LinkedIn"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-              </svg>
-            </a>
-            <a
-              href="https://github.com/DoramiDoraNobi"
-              className="hero-social-link"
-              aria-label="GitHub"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-              </svg>
-            </a>
-            <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=mikobantul@gmail.com"
-              className="hero-social-link"
-              aria-label="Email"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
-            </a>
-          </div>
-
-          {/* Stats */}
-          <div className="hero-stats animate-slide-up-delay-4">
-            <div className="hero-stat">
-              <span className="hero-stat-number">2+</span>
-              <span className="hero-stat-label">Tahun Pengalaman</span>
+            {/* Social Links */}
+            <div className="flex items-center gap-4">
+              {[
+                { icon: <LinkedinLogo weight="fill" />, href: "https://www.linkedin.com/in/mikail-yuddha-wibowo-b579b7221/" },
+                { icon: <GithubLogo weight="fill" />, href: "https://github.com/DoramiDoraNobi" },
+                { icon: <EnvelopeSimple weight="bold" />, href: "mailto:mikobantul@gmail.com" }
+              ].map((social, idx) => (
+                <a 
+                  key={idx}
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex h-12 w-12 items-center justify-center rounded-full border border-white/5 bg-white/5 text-zinc-400 transition-all duration-300 hover:border-emerald-500/30 hover:bg-emerald-500/10 hover:text-emerald-400 hover:-translate-y-1"
+                >
+                  {social.icon}
+                </a>
+              ))}
             </div>
-            <div className="hero-stat">
-              <span className="hero-stat-number">5+</span>
-              <span className="hero-stat-label">Project Selesai</span>
-            </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        {/* Image side */}
-        <div className="hero-image-wrapper animate-scale-in">
-          <div className="hero-image-container">
-            {/* Decorative rings */}
-            <div className="hero-image-ring" />
-            <div className="hero-image-ring-2" />
-
-            {/* Floating particles */}
-            <div className="hero-particle hero-particle-1" />
-            <div className="hero-particle hero-particle-2" />
-            <div className="hero-particle hero-particle-3" />
-            <div className="hero-particle hero-particle-4" />
-
-            {/* Image */}
-            <div className="hero-image-blob">
+        {/* Visual Showcase Side (Double Bezel Card) */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ type: "spring" as const, stiffness: 50, damping: 20, delay: 0.4 }}
+          className="w-full md:w-[45%] flex justify-center md:justify-end"
+        >
+          <div className="doppelrand-shell group w-full max-w-[400px] transform-gpu transition-all duration-700 hover:rotate-1 hover:scale-[1.02]">
+            <div className="doppelrand-core aspect-[4/5] relative">
               <Image
-                src="/gambar_saya.png"
-                alt="Foto Mikail"
-                width={360}
-                height={440}
-                style={{ objectFit: "cover", objectPosition: "center top" }}
-                loading="eager"
+                src="/gambar_saya_withbackground.png"
+                alt="Mikail Yuddha Wibowo"
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 400px"
+                className="object-cover object-top filter grayscale opacity-80 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent opacity-80" />
+              
+              {/* Floating Stat Badge */}
+              <div className="absolute bottom-6 left-6 rounded-2xl bg-black/40 backdrop-blur-md border border-white/10 p-4">
+                <p className="text-xs text-zinc-400 uppercase tracking-wider mb-1">Status</p>
+                <p className="text-xl font-semibold text-emerald-400">Fresh Graduate</p>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
 
-      {/* Scroll indicator */}
-      <div className="hero-scroll-indicator">
-        <span>Scroll</span>
-        <div className="hero-scroll-line" />
       </div>
     </section>
   );

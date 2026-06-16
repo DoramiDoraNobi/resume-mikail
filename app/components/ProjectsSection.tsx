@@ -1,90 +1,142 @@
 "use client";
 
+import { motion } from "framer-motion";
+import { ArrowUpRight, Browser, Code } from "@phosphor-icons/react";
+
+const projects = [
+  {
+    title: "Trilogika Edutama Main Web",
+    url: "https://trilogikaedutama.id/",
+    description: "Merombak total web utama menggunakan ekosistem Laravel modern untuk memberikan performa yang cepat, SEO yang optimal, dan pengalaman pengguna yang responsif.",
+    tech: ["Laravel", "Tailwind CSS", "MySQL"],
+  },
+  {
+    title: "Learning Management System",
+    url: "http://lms.trilogikaedutama.id/",
+    description: "Membangun platform LMS secara menyeluruh dari nol menggunakan Livewire. Sistem ini menangani manajemen kursus, pendaftaran siswa, dan interaksi pembelajaran secara real-time.",
+    tech: ["Laravel Livewire", "Alpine.js", "Tailwind CSS"],
+  },
+  {
+    title: "LSP Documentation Web",
+    url: "https://lsp.trilogikaedutama.id/",
+    description: "Membangun sistem informasi berbasis web untuk Lembaga Sertifikasi Profesi (LSP) guna mempermudah proses dokumentasi, pendaftaran asesmen, dan pelaporan yang terpusat.",
+    tech: ["Laravel", "Bootstrap", "MySQL"],
+  },
+  {
+    title: "Document OCR",
+    url: "https://smart-document-reader.deagabriella9.workers.dev/login",
+    description: "Aplikasi Document OCR yang memanfaatkan LLM Open Router Qwen untuk mengekstrak dan menganalisis teks dari dokumen secara cerdas dan akurat.",
+    tech: ["Open Router", "Qwen LLM", "OCR", "Cloudflare Workers"],
+  }
+];
+
 export default function ProjectsSection() {
-  const projects = [
-    {
-      title: "Trilogika Edutama Main Web",
-      url: "https://trilogikaedutama.id/",
-      description: "Merombak total web utama menggunakan ekosistem Laravel modern untuk memberikan performa yang cepat, SEO yang optimal, dan pengalaman pengguna yang responsif.",
-      tech: ["Laravel", "Tailwind CSS", "MySQL"],
-    },
-    {
-      title: "Learning Management System",
-      url: "http://lms.trilogikaedutama.id/",
-      description: "Membangun platform LMS secara menyeluruh dari nol menggunakan Livewire. Sistem ini menangani manajemen kursus, pendaftaran siswa, dan interaksi pembelajaran secara real-time.",
-      tech: ["Laravel Livewire", "Alpine.js", "Tailwind CSS"],
-    },
-    {
-      title: "LSP Documentation Web",
-      url: "https://lsp.trilogikaedutama.id/",
-      description: "Membangun sistem informasi berbasis web untuk Lembaga Sertifikasi Profesi (LSP) guna mempermudah proses dokumentasi, pendaftaran asesmen, dan pelaporan yang terpusat.",
-      tech: ["Laravel", "Bootstrap", "MySQL"],
-    },
-    {
-      title: "Document OCR",
-      url: "https://smart-document-reader.deagabriella9.workers.dev/login",
-      description: "Aplikasi Document OCR yang memanfaatkan LLM Open Router Qwen untuk mengekstrak dan menganalisis teks dari dokumen secara cerdas dan akurat.",
-      tech: ["Open Router", "Qwen LLM", "OCR", "Cloudflare Workers"],
-    }
-  ];
-
   return (
-    <section className="projects-section" id="projects">
-      <div className="projects-header">
-        <h2 className="projects-title">Karya & <span>Proyek</span></h2>
-        <p className="projects-subtitle">Beberapa sistem dan website yang telah saya bangun dan kembangkan secara langsung.</p>
-      </div>
-
-      <div className="projects-container">
-        {projects.map((project, index) => (
-          <div className={`project-row ${index % 2 !== 0 ? 'project-row-reverse' : ''}`} key={index}>
-            
-            {/* Window Side */}
-            <div className="project-window-wrapper">
-              <div className="browser-window">
-                <div className="browser-header">
-                  <div className="browser-dots">
-                    <span className="dot dot-red"></span>
-                    <span className="dot dot-yellow"></span>
-                    <span className="dot dot-green"></span>
-                  </div>
-                  <div className="browser-urlbar">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                    {project.url.replace(/^https?:\/\//, '')}
-                  </div>
-                  <a href={project.url} target="_blank" rel="noopener noreferrer" className="browser-external" title="Buka di tab baru">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                  </a>
-                </div>
-                <div className="browser-content">
-                  <iframe 
-                    src={project.url} 
-                    title={project.title}
-                    loading="lazy"
-                    sandbox="allow-scripts allow-same-origin allow-forms"
-                  ></iframe>
-                </div>
-              </div>
-            </div>
-
-            {/* Text Side */}
-            <div className="project-info">
-              <div className="project-number">0{index + 1}</div>
-              <h3 className="project-name">{project.title}</h3>
-              <p className="project-desc">{project.description}</p>
-              <div className="project-tech">
-                {project.tech.map((t, i) => (
-                  <span key={i} className="tech-badge">{t}</span>
-                ))}
-              </div>
-              <a href={project.url} target="_blank" rel="noopener noreferrer" className="project-link">
-                Kunjungi Website
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </a>
-            </div>
-
+    <section id="projects" className="relative w-full py-32 px-6 md:px-12 lg:px-24 bg-[#050505]">
+      <div className="max-w-[1400px] mx-auto">
+        
+        {/* Section Header */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
+          className="mb-24 md:mb-32 flex flex-col md:flex-row md:items-end justify-between gap-8"
+        >
+          <div>
+            <h2 className="text-3xl md:text-5xl lg:text-7xl font-medium tracking-tight text-zinc-100">
+              Karya & <span className="text-emerald-500 italic">Eksplorasi</span>
+            </h2>
+            <div className="h-[1px] w-full max-w-sm bg-gradient-to-r from-emerald-500/50 to-transparent mt-6" />
           </div>
-        ))}
+          <p className="text-zinc-400 max-w-md text-lg leading-relaxed">
+            Sistem dan produk digital yang telah saya arsitekturi dan kembangkan, berfokus pada skala dan pengalaman pengguna.
+          </p>
+        </motion.div>
+
+        {/* Project List: Z-Axis Cascade / Staggered Grid */}
+        <div className="flex flex-col gap-24 md:gap-32">
+          {projects.map((project, index) => (
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] as const }}
+              className={`flex flex-col gap-8 md:gap-16 ${index % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row'} items-center`}
+            >
+              
+              {/* Visual Side (Double-Bezel iframe container) */}
+              <div className="w-full md:w-[60%]">
+                <div className="doppelrand-shell group relative transform-gpu transition-all duration-700 hover:scale-[1.01]">
+                  <div className="doppelrand-core aspect-video w-full relative bg-[#0A0A0A] flex flex-col overflow-hidden">
+                    {/* Faux Browser Header */}
+                    <div className="h-10 w-full bg-zinc-900/50 border-b border-white/5 flex items-center px-4 gap-2 backdrop-blur-md absolute top-0 z-20">
+                      <div className="flex gap-1.5">
+                        <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+                      </div>
+                      <div className="mx-auto flex items-center gap-2 px-3 py-1 bg-black/50 rounded-md text-[10px] text-zinc-500 font-mono tracking-wider border border-white/5">
+                        <Browser size={12} />
+                        {project.url.replace(/^https?:\/\//, '')}
+                      </div>
+                    </div>
+                    {/* Iframe Content */}
+                    <div className="flex-1 mt-10 relative bg-zinc-950">
+                      {/* Placeholder overlay to prevent iframe stealing scroll events too aggressively */}
+                      <div className="absolute inset-0 z-10 bg-transparent" />
+                      <iframe 
+                        src={project.url} 
+                        title={project.title}
+                        loading="lazy"
+                        sandbox="allow-scripts allow-same-origin"
+                        className="w-full h-full border-none opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Text Side */}
+              <div className="w-full md:w-[40%] flex flex-col items-start">
+                <span className="text-emerald-500 font-mono text-sm tracking-widest mb-4">
+                  0{index + 1}
+                </span>
+                <h3 className="text-3xl md:text-4xl font-medium text-zinc-100 mb-6 tracking-tight">
+                  {project.title}
+                </h3>
+                <p className="text-zinc-400 text-lg leading-relaxed mb-8">
+                  {project.description}
+                </p>
+                
+                {/* Tech Stack Chips */}
+                <div className="flex flex-wrap gap-2 mb-10">
+                  {project.tech.map((t, i) => (
+                    <span key={i} className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-zinc-300 font-medium tracking-wide flex items-center gap-1.5">
+                      <Code size={12} className="text-emerald-500" />
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Magnetic Button */}
+                <a 
+                  href={project.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group relative inline-flex items-center gap-4 rounded-full bg-zinc-900 border border-white/10 pl-6 pr-2 py-2 text-sm font-semibold text-zinc-100 transition-all ease-fluid duration-500 hover:bg-zinc-800 hover:border-emerald-500/30 active:scale-[0.98]"
+                >
+                  Live Preview
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400 transition-transform duration-500 ease-fluid group-hover:bg-emerald-500 group-hover:text-zinc-950 group-hover:scale-105 group-hover:translate-x-1 group-hover:-translate-y-[1px]">
+                    <ArrowUpRight weight="bold" />
+                  </span>
+                </a>
+              </div>
+
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
