@@ -19,6 +19,12 @@ export default function ProjectsSection() {
       url: "https://lsp.trilogikaedutama.id/",
       description: "Membangun sistem informasi berbasis web untuk Lembaga Sertifikasi Profesi (LSP) guna mempermudah proses dokumentasi, pendaftaran asesmen, dan pelaporan yang terpusat.",
       tech: ["Laravel", "Bootstrap", "MySQL"],
+    },
+    {
+      title: "Document OCR",
+      url: "https://smart-document-reader.deagabriella9.workers.dev/login",
+      description: "Aplikasi Document OCR yang memanfaatkan LLM Open Router Qwen untuk mengekstrak dan menganalisis teks dari dokumen secara cerdas dan akurat.",
+      tech: ["Open Router", "Qwen LLM", "OCR", "Cloudflare Workers"],
     }
   ];
 

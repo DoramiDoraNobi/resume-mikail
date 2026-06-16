@@ -21,7 +21,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" className={`${inter.variable} antialiased`}>
-      <body className="min-h-screen">{children}</body>
+      <body className="min-h-screen relative">
+        {/* Galaxy Background Elements */}
+        <div className="stars" />
+        <div className="stars2" />
+        <div className="nebula-glow nebula-1" />
+        <div className="nebula-glow nebula-2" />
+        
+        {children}
+      </body>
     </html>
   );
 }

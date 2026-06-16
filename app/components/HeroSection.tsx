@@ -5,29 +5,6 @@ import Image from "next/image";
 export default function HeroSection() {
   return (
     <section className="hero-section" id="hero">
-      {/* Background decorations */}
-      <div className="hero-grid" />
-      <div className="hero-orb hero-orb-1" />
-      <div className="hero-orb hero-orb-2" />
-      <div className="hero-orb hero-orb-3" />
-
-      {/* Sparkle decorations */}
-      <div className="hero-sparkle hero-sparkle-1">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z" />
-        </svg>
-      </div>
-      <div className="hero-sparkle hero-sparkle-2">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z" />
-        </svg>
-      </div>
-      <div className="hero-sparkle hero-sparkle-3">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z" />
-        </svg>
-      </div>
-
       {/* Main content */}
       <div className="hero-content">
         {/* Text side */}
@@ -64,7 +41,7 @@ export default function HeroSection() {
               </svg>
               Hubungi Saya
             </a>
-            <a href="#portfolio" className="hero-btn hero-btn-secondary">
+            <a href="#projects" className="hero-btn hero-btn-secondary">
               Lihat Portfolio
             </a>
           </div>
@@ -72,7 +49,7 @@ export default function HeroSection() {
           {/* Social links */}
           <div className="hero-socials animate-slide-up-delay-4">
             <a
-              href="#"
+              href="https://www.linkedin.com/in/mikail-yuddha-wibowo-b579b7221/"
               className="hero-social-link"
               aria-label="LinkedIn"
             >
@@ -96,7 +73,7 @@ export default function HeroSection() {
               </svg>
             </a>
             <a
-              href="#"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=mikobantul@gmail.com"
               className="hero-social-link"
               aria-label="Email"
             >

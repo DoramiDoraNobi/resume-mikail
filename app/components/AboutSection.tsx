@@ -5,8 +5,10 @@ import Image from "next/image";
 export default function AboutSection() {
   return (
     <section className="about-section" id="about">
-      {/* Background decorations for dark theme */}
-      <div className="about-grid" />
+      {/* Planetary Background decorations */}
+      <div className="planet-ring-bg" />
+      <div className="planet-glow planet-glow-1" />
+      <div className="planet-glow planet-glow-2" />
       
       <div className="about-content">
         {/* Image side */}
@@ -23,9 +25,11 @@ export default function AboutSection() {
               />
             </div>
             
-            {/* Decorative elements */}
-            <div className="about-decoration about-decoration-1" />
-            <div className="about-decoration about-decoration-2" />
+            {/* Orbital decorative elements */}
+            <div className="orbit-ring orbit-ring-1" />
+            <div className="orbit-ring orbit-ring-2" />
+            <div className="orbit-dot orbit-dot-1" />
+            <div className="orbit-dot orbit-dot-2" />
           </div>
         </div>
 
