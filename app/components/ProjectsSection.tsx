@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Browser, Code } from "@phosphor-icons/react";
+import { ArrowUpRight, Browser, Code, ShieldCheck, GithubLogo, CheckCircle } from "@phosphor-icons/react";
 
 const projects = [
   {
@@ -28,6 +28,21 @@ const projects = [
     description: "Aplikasi Document OCR yang memanfaatkan LLM Open Router Qwen untuk mengekstrak dan menganalisis teks dari dokumen secara cerdas dan akurat.",
     tech: ["Open Router", "Qwen LLM", "OCR", "Cloudflare Workers"],
   }
+];
+
+const personalProjects = [
+  {
+    title: "Decarabian",
+    url: "https://github.com/DoramiDoraNobi/decarabian",
+    description: "AI Security Gateway & Secret Vault — proxy transparan untuk AI Agent. Alih-alih memberikan API key asli ke LLM, Decarabian menyimpannya di encrypted vault (AES-256), mengelola permission per-agent, dan mencatat setiap transaksi secara otomatis.",
+    tech: ["Next.js", "TypeScript", "AES-256 Encryption", "REST API Proxy"],
+    features: [
+      "Encrypted credential vault untuk menyimpan API key dengan aman",
+      "Granular permission system per AI Agent",
+      "Dynamic URL routing untuk reusable API tool definitions",
+      "Full audit log untuk setiap request yang diproses",
+    ],
+  },
 ];
 
 export default function ProjectsSection() {
@@ -137,7 +152,98 @@ export default function ProjectsSection() {
             </motion.div>
           ))}
         </div>
+
+        {/* ===== Personal Projects Subsection ===== */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
+          className="mt-32 md:mt-40 mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8"
+        >
+          <div>
+            <h2 className="text-3xl md:text-5xl lg:text-7xl font-medium tracking-tight text-zinc-100">
+              Proyek <span className="text-emerald-500 italic">Personal</span>
+            </h2>
+            <div className="h-[1px] w-full max-w-sm bg-gradient-to-r from-emerald-500/50 to-transparent mt-6" />
+          </div>
+          <p className="text-zinc-400 max-w-md text-lg leading-relaxed">
+            Open-source project yang saya bangun untuk menyelesaikan masalah nyata di dunia AI & keamanan.
+          </p>
+        </motion.div>
+
+        <div className="flex flex-col gap-8">
+          {personalProjects.map((project, index) => (
+            <motion.a
+              key={index}
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] as const }}
+              className="group relative block w-full max-w-3xl mx-auto"
+            >
+              {/* Card shell using Doppelrand style */}
+              <div className="doppelrand-shell transition-all duration-700 group-hover:scale-[1.01] group-hover:ring-emerald-500/20">
+                <div className="doppelrand-core p-8 md:p-10">
+
+                  {/* Card Header: Icon + Badge */}
+                  <div className="flex items-center justify-between mb-8">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                      <ShieldCheck size={28} weight="duotone" />
+                    </div>
+                    <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs text-zinc-300 font-medium tracking-wide">
+                      <GithubLogo size={14} weight="bold" />
+                      Open Source
+                    </span>
+                  </div>
+
+                  {/* Title & Description */}
+                  <h3 className="text-2xl md:text-3xl font-medium text-zinc-100 mb-4 tracking-tight">
+                    {project.title}
+                  </h3>
+                  <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-8 max-w-2xl">
+                    {project.description}
+                  </p>
+
+                  {/* Features List */}
+                  <ul className="space-y-3 mb-8">
+                    {project.features.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-3 text-sm text-zinc-300">
+                        <CheckCircle size={18} weight="fill" className="text-emerald-500 mt-0.5 flex-shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {project.tech.map((t, i) => (
+                      <span key={i} className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-zinc-300 font-medium tracking-wide flex items-center gap-1.5">
+                        <Code size={12} className="text-emerald-500" />
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Footer CTA */}
+                  <div className="inline-flex items-center gap-4 rounded-full bg-zinc-900 border border-white/10 pl-6 pr-2 py-2 text-sm font-semibold text-zinc-100 transition-all ease-fluid duration-500 group-hover:bg-zinc-800 group-hover:border-emerald-500/30">
+                    Lihat di GitHub
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400 transition-transform duration-500 ease-fluid group-hover:bg-emerald-500 group-hover:text-zinc-950 group-hover:scale-105 group-hover:translate-x-1 group-hover:-translate-y-[1px]">
+                      <ArrowUpRight weight="bold" />
+                    </span>
+                  </div>
+
+                </div>
+              </div>
+            </motion.a>
+          ))}
+        </div>
+
       </div>
     </section>
   );
 }
+
